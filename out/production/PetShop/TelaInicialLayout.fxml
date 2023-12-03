@@ -7,7 +7,7 @@
 
 <Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="500.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="TelaInicialController">
    <children>
-      <ImageView fitHeight="236.0" fitWidth="236.0" layoutX="97.0" layoutY="57.0" pickOnBounds="true" preserveRatio="true">
+      <ImageView fitHeight="390.0" fitWidth="493.0" layoutX="34.0" layoutY="55.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@img/LogoIcon.png" />
          </image>
@@ -19,9 +19,10 @@
                   <Image url="@img/Backgroud.png" />
                </image>
             </ImageView>
-            <Button layoutX="132.0" layoutY="159.0" mnemonicParsing="false" onAction="#CadastrarClic" prefHeight="33.0" prefWidth="92.0" text="Cadastrar" />
-            <Button layoutX="132.0" layoutY="231.0" mnemonicParsing="false" onAction="#BucarClick" prefHeight="33.0" prefWidth="92.0" text="Buscar Dados" />
-            <Button layoutX="132.0" layoutY="302.0" mnemonicParsing="false" onAction="#EncerrarClick" prefHeight="33.0" prefWidth="92.0" text="Encerrar" />
+            <Button layoutX="132.0" layoutY="152.0" mnemonicParsing="false" onAction="#CadastrarClic" prefHeight="33.0" prefWidth="92.0" text="Cadastrar" />
+            <Button layoutX="132.0" layoutY="271.0" mnemonicParsing="false" onAction="#BucarClick" prefHeight="33.0" prefWidth="92.0" text="Buscar Dados" />
+            <Button layoutX="132.0" layoutY="331.0" mnemonicParsing="false" onAction="#EncerrarClick" prefHeight="33.0" prefWidth="92.0" text="Encerrar" />
+            <Button layoutX="132.0" layoutY="211.0" mnemonicParsing="false" onAction="#ServicoClick" prefHeight="33.0" prefWidth="92.0" text="Agendar" />
          </children>
       </Pane>
    </children>

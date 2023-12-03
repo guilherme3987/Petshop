@@ -10,7 +10,7 @@
 <Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="500.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="CadastrarTPController">
    <children>
       <TextField fx:id="NomeTutor" layoutX="177.0" layoutY="194.0" />
-      <ImageView fitHeight="95.0" fitWidth="134.0" layoutX="31.0" layoutY="28.0" pickOnBounds="true" preserveRatio="true">
+      <ImageView fitHeight="231.0" fitWidth="233.0" layoutY="-37.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@img/LogoIcon.png" />
          </image>
