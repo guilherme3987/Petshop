@@ -9,6 +9,7 @@ public class Tutor {
     private String telefone;
     // private ArrayList<Pet> listaDePets;
     private List<Pet> listaDePets;
+    private List<Servico> servicosAgendados;
 
     Singleton singletonIntance = Singleton.getInstance();
 
@@ -24,6 +25,7 @@ public class Tutor {
         this.cpf = cpf;
         this.telefone = telefone;
         this.listaDePets = new ArrayList<>();
+        this.servicosAgendados = new ArrayList<>();
     }
 
     // public List<Tutor> getListaDeTutores() {
@@ -62,12 +64,16 @@ public class Tutor {
         return listaDePets;
     }
 
+    public List<Servico> getServicosAgendados() {
+        return servicosAgendados;
+    }
+
     public void adicionarPet(Pet pet) {
         listaDePets.add(pet);
     }
 
-    public void adicionarTutor(Tutor tutor) {
-        Singleton.getInstance().adicionarTutor(tutor);
+    public void adicionarServico(Servico servico) {
+        servicosAgendados.add(servico);
     }
 
     public void removerPet(Pet pet) {

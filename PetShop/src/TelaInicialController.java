@@ -35,6 +35,26 @@ public class TelaInicialController {
     }
 
     @FXML
+    void ServicoClick(ActionEvent event) {
+        try {
+            Button botaoClicado = (Button) event.getSource();
+
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("TelaDeServicoLayout.fxml"));
+            Parent root = loader.load();
+
+            Scene cena = new Scene(root);
+
+            Stage palco = (Stage) botaoClicado.getScene().getWindow();
+
+            palco.setScene(cena);
+
+            palco.show();
+        }catch (Exception e){
+            e.printStackTrace();
+        }
+    }
+
+    @FXML
     void BucarClick(ActionEvent event) {
        try {
             // Obtém o botão que acionou o evento

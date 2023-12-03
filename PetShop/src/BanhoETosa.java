@@ -1,8 +1,8 @@
-public class Tosa extends Servico {
+public class BanhoETosa extends Servico {
     private Pet pet;
 
     // Constructor
-    public Tosa(String nomeServico, double precoServico, Pet pet) {
+    public BanhoETosa(String nomeServico, double precoServico, Pet pet) {
         super(nomeServico, precoServico);
         this.pet = pet;
     }
@@ -16,13 +16,10 @@ public class Tosa extends Servico {
     public void setPet(Pet pet) {
         this.pet = pet;
     }
-
-
     @Override
     public double calcServico(Pet pet) {
         // Não use super.precoServico diretamente, use o atributo de instância para evitar problemas de herança
-        this.precoServico = 100;
+        this.precoServico = 150;
         return this.precoServico * pet.getPeso();
     }
-
 }

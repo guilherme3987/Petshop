@@ -57,7 +57,7 @@ public class TelaBuscaController {
 
             TutorNomeColumn.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().getNome()));
             QuantidadePetColumn.setCellValueFactory(cellData -> new SimpleStringProperty(String.valueOf(cellData.getValue().getListaDePets().size())));
-            TelefoneColumn.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().getTelefone())); // Corrigido para obter o telefone do tutor
+            TelefoneColumn.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().getTelefone()));
         }
     }
 
