@@ -64,6 +64,10 @@ public class Tutor {
         return listaDePets;
     }
 
+    public void setListaDePets(List<Pet> listaDePets) {
+        this.listaDePets = listaDePets;
+    }
+
     public List<Servico> getServicosAgendados() {
         return servicosAgendados;
     }
@@ -77,8 +81,15 @@ public class Tutor {
     }
 
     public void removerPet(Pet pet) {
-        Singleton.getInstance().removerPet(pet);
+        if (listaDePets.contains(pet)) {
+            listaDePets.remove(pet);
+            System.out.println("Pet removido com sucesso: " + pet);
+        } else {
+            System.out.println("O pet não está na lista do tutor.");
+        }
     }
+
+
 
     @Override
     public String toString() {

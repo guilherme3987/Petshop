@@ -40,5 +40,11 @@
       <Label layoutX="431.0" layoutY="164.0" text="Total" />
       <Button layoutX="434.0" layoutY="251.0" mnemonicParsing="false" onAction="#Confirmar" prefHeight="25.0" prefWidth="88.0" text="Confirmar" />
       <Button layoutX="434.0" layoutY="291.0" mnemonicParsing="false" onAction="#Voltar" prefHeight="25.0" prefWidth="88.0" text="Voltar" />
+      <CheckBox fx:id="CheckBoxConsulta" layoutX="102.0" layoutY="297.0" mnemonicParsing="false" text="Consulta veterianaria" />
+      <ImageView fitHeight="15.0" fitWidth="17.0" layoutX="237.0" layoutY="296.0">
+         <image>
+            <Image url="@img/vetIcon.png" />
+         </image>
+      </ImageView>
    </children>
 </Pane>

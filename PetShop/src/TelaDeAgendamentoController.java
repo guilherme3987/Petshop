@@ -35,11 +35,15 @@ public class TelaDeAgendamentoController {
     private CheckBox CheckBoxTosa;
 
     @FXML
+    private CheckBox CheckBoxConsulta;
+
+    @FXML
     void initialize() {
         // Método chamado ao inicializar o controlador
         // Configura listeners para as CheckBoxes
         CheckBoxBanho.setOnAction(e -> atualizarValorTotal());
         CheckBoxTosa.setOnAction(e -> atualizarValorTotal());
+        CheckBoxConsulta.setOnAction(e -> atualizarValorTotal());
 
         // Calcula e exibe o valor total quando a tela é carregada
         atualizarValorTotal();
@@ -47,6 +51,11 @@ public class TelaDeAgendamentoController {
 
     private void atualizarValorTotal() {
         double precoServico = 0;
+
+        if (CheckBoxConsulta.isSelected()) {
+            Servico consulta = new Consulta("Banho", 100, petParaAgendamento);
+            precoServico += consulta.calcServico(petParaAgendamento);
+        }
 
         // Verifica se Banho está selecionado
         if (CheckBoxBanho.isSelected()) {

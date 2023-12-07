@@ -47,5 +47,10 @@ public class Singleton {
 
     public void removerPet(Pet pet) {
         listaDePet.remove(pet);
+
+        // Itera sobre todos os tutores para remover o pet de cada tutor
+        for (Tutor tutor : listaDeTutores) {
+            tutor.removerPet(pet);
+        }
     }
 }

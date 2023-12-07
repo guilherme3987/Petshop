@@ -12,10 +12,12 @@ import javafx.scene.control.Button;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
+import javafx.stage.Modality;
 import javafx.stage.Stage;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.input.MouseButton;
 import javafx.scene.input.MouseEvent;
+import javafx.stage.StageStyle;
 
 public class TelaBuscaController {
 
@@ -138,30 +140,37 @@ public class TelaBuscaController {
     // Método para abrir a janela de edição
     private void abrirJanelaEdicao(Tutor tutor) {
         try {
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("TelaDeAlteracaoLayout.fxml"));
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("TelaDeEdicaoTutorLayout.fxml"));
             Parent root = loader.load();
 
             // Obtém o controlador da janela de edição
-            TelaDeEdicaoController telaDeEdicaoController = loader.getController();
+            TelaDeEdicaoTutorController telaDeEdicaoTutorController = loader.getController();
 
             // Passa o objeto Tutor para o controlador da janela de edição
-            telaDeEdicaoController.initData(tutor);
+            telaDeEdicaoTutorController.initData(tutor);
 
             // Cria a cena
             Scene cena = new Scene(root);
 
             // Cria um novo palco (Stage) para a janela de edição
             Stage palcoEdicao = new Stage();
-            palcoEdicao.setScene(cena);
+
+            // Configura o palco como uma janela modal (bloqueia interação com a janela principal)
+            palcoEdicao.initModality(Modality.APPLICATION_MODAL);
+
+            // Configura o estilo da janela (sem decorações padrão)
+            palcoEdicao.initStyle(StageStyle.UNDECORATED);
 
             // Define o título da janela de edição
             palcoEdicao.setTitle("Editar Tutor");
 
+            // Define a cena no palco
+            palcoEdicao.setScene(cena);
+
             // Exibe a janela de edição
-            palcoEdicao.show();
+            palcoEdicao.showAndWait();
         } catch (Exception e) {
             e.printStackTrace();
         }
     }
-
 }
