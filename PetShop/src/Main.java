@@ -13,13 +13,13 @@ public class Main extends Application{
 
     @Override
     public void start(Stage primaryStage) throws IOException {
-        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("TelaInicialLayout.fxml"));
+        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("interfaces/layout/TelaInicialLayout.fxml"));
         Parent root = fxmlLoader.load();
         Scene telaInicial = new Scene(root);
 
-        primaryStage.setTitle("Pet Shop");
         primaryStage.setResizable(false);
         primaryStage.setScene(telaInicial);
+        primaryStage.setTitle("Pet Shop - Inicio");
         primaryStage.show();
     }
 }

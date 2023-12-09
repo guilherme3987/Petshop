@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.text.Font?>
+
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="500.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="interfaces.controllers.TelaDeEdicaoTutorController">
+   <children>
+      <Pane layoutX="10.0" layoutY="10.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="500.0" prefWidth="800.0">
+         <children>
+            <TextField fx:id="TelefoneTutor" layoutX="97.0" layoutY="182.0" prefHeight="25.0" prefWidth="175.0" />
+            <Label layoutX="97.0" layoutY="80.0" prefHeight="25.0" prefWidth="116.0" text="Editar Cadastro">
+               <font>
+                  <Font size="16.0" />
+               </font>
+            </Label>
+            <Label layoutX="60.0" layoutY="113.0" mouseTransparent="true" prefHeight="25.0" prefWidth="40.0" text="Nome:" />
+            <Button layoutX="283.0" layoutY="352.0" mnemonicParsing="false" onAction="#AdicionarPets" prefHeight="33.0" prefWidth="81.0" text="Add Pet" />
+            <Button layoutX="97.0" layoutY="221.0" mnemonicParsing="false" onAction="#BotaoMostrarTodosPet" prefHeight="33.0" prefWidth="175.0" text="Mostra Pets" />
+            <ImageView fitHeight="25.0" fitWidth="25.0" layoutX="283.0" layoutY="225.0">
+               <image>
+                  <Image url="@../img/bucarIcon.png" />
+               </image>
+            </ImageView>
+            <TextField fx:id="NomeTutor" layoutX="97.0" layoutY="113.0" prefHeight="25.0" prefWidth="175.0" />
+            <TableView fx:id="tabelaDados" layoutX="369.0" layoutY="106.0" prefHeight="371.0" prefWidth="406.0">
+               <columns>
+                  <TableColumn fx:id="NomePetColumn" editable="false" prefWidth="190.0" text="Nome" />
+                  <TableColumn fx:id="RacaPetColumn" editable="false" prefWidth="126.0" text="Raca" />
+                  <TableColumn fx:id="PesoPetColumn" editable="false" prefWidth="89.0" text="Peso" />
+               </columns>
+            </TableView>
+            <Label layoutX="62.0" layoutY="148.0" mouseTransparent="true" prefHeight="25.0" prefWidth="34.0" text="CPF:" />
+            <TextField fx:id="CPFTutor" editable="false" layoutX="97.0" layoutY="148.0" prefHeight="25.0" prefWidth="175.0" />
+            <Label layoutX="63.0" layoutY="182.0" mouseTransparent="true" prefHeight="25.0" prefWidth="34.0" text="Tel:" />
+            <ImageView fitHeight="328.0" fitWidth="378.0" layoutX="-20.0" layoutY="231.0">
+               <image>
+                  <Image url="@../img/LogoIcon.png" />
+               </image>
+            </ImageView>
+            <Button layoutX="96.0" layoutY="268.0" mnemonicParsing="false" onAction="#VoltarTela" prefHeight="33.0" prefWidth="81.0" text="Voltar" />
+            <Button layoutX="191.0" layoutY="268.0" mnemonicParsing="false" onAction="#SalvarDadosTutor" prefHeight="33.0" prefWidth="81.0" text="Salvar" />
+         </children>
+      </Pane>
+   </children>
+</Pane>
