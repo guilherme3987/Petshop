@@ -21,6 +21,7 @@ import javafx.stage.StageStyle;
 import javafx.scene.input.MouseButton;
 
 import java.io.IOException;
+import java.util.Arrays;
 
 public class TelaDeEdicaoTutorController {
 
@@ -95,6 +96,15 @@ public class TelaDeEdicaoTutorController {
     @FXML
     void SalvarDadosTutor(ActionEvent event) {
 
+        if (NomeTutor.getText().trim().isEmpty() || TelefoneTutor.getText().trim().isEmpty()) {
+            exibirAlerta("Erro", "Todos os campos são obrigatórios", Alert.AlertType.ERROR);
+        }
+
+        if (!CadastrarTPController.validadorTelefone.validarTelefone(TelefoneTutor.getText())) {
+            exibirAlerta("Erro", "Número de telefone inválido!", Alert.AlertType.ERROR);
+            return;
+        }
+
         exibirAlerta("Salvando...", "Dados Salvo com sucesso!", Alert.AlertType.INFORMATION);
 
         tutorParaEdicao.setNome(NomeTutor.getText());
@@ -150,6 +160,33 @@ public class TelaDeEdicaoTutorController {
             palcoEdicaoPet.showAndWait();
         } catch (IOException e) {
             exibirAlerta("Erro", "Erro ao abrir a janela de edição do Pet.", Alert.AlertType.ERROR);
+        }
+    }
+
+
+    public class validadorTelefone {
+
+        public static boolean validarTelefone(String telefone) {
+            // Remove caracteres n numericos
+            String numeroLimpo = telefone.replaceAll("[^0-9]", "");
+
+            // Verifica se o num de telefone tem o formato BR
+            if (!numeroLimpo.matches("\\d{10,11}")) {
+                return false;
+            }
+
+            // Extrai o DDD
+            String ddd = numeroLimpo.substring(0, 2);
+
+            // DDDs BR VALIDOS
+            String[] dddsValidos = {"11", "12", "13", "14", "15", "16", "17", "18", "19", "21", "22", "24", "27", "28", "31", "32", "33", "34", "35", "37", "38", "41", "42", "43", "44", "45", "46", "47", "48", "49", "51", "53", "54", "55", "61", "62", "63", "64", "65", "66", "67", "68", "69", "71", "73", "74", "75", "77", "79", "81", "82", "83", "84", "85", "86", "87", "88", "89", "91", "92", "93", "94", "95", "96", "97", "98", "99"};
+
+            //  DDD é válido
+            if (!Arrays.asList(dddsValidos).contains(ddd)) {
+                return false;
+            }
+
+            return true;
         }
     }
 

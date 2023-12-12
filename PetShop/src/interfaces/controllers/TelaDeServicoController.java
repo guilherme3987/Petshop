@@ -12,10 +12,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.Button;
-import javafx.scene.control.TableColumn;
-import javafx.scene.control.TableView;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.input.MouseButton;
 import javafx.stage.Stage;
@@ -49,20 +46,28 @@ public class TelaDeServicoController {
     void BotaoDeBusca(ActionEvent event) {
         String cpfTutor = CampoDeBusca.getText();
 
-        Tutor tutorEncontrado = menu.BuscaTutor(cpfTutor);
+        if (cpfTutor.isEmpty()) {
+            exibirAlerta("Atenção", "Campo de Busca Vazio.", Alert.AlertType.INFORMATION);
+        } else {
+            Tutor tutorEncontrado = menu.BuscaTutor(cpfTutor);
 
-        tabelaDados.getItems().clear();
+            if (tutorEncontrado == null) {
+                exibirAlerta("Atenção", "CPF Não Foi Encontrado.", Alert.AlertType.INFORMATION);
+            } else {
+                tabelaDados.getItems().clear();
 
-        if (tutorEncontrado != null) {
-            List<Pet> petsDoTutor = tutorEncontrado.getListaDePets();
+                if (tutorEncontrado != null) {
+                    List<Pet> petsDoTutor = tutorEncontrado.getListaDePets();
 
-            ObservableList<Pet> petObservableList = FXCollections.observableArrayList(petsDoTutor);
+                    ObservableList<Pet> petObservableList = FXCollections.observableArrayList(petsDoTutor);
 
-            tabelaDados.setItems(petObservableList);
+                    tabelaDados.setItems(petObservableList);
 
-            PetNomeColumn.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().getNome()));
-            RacaPetColumn.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().getRaca()));
-            PesoPetColumn.setCellValueFactory(cellData -> new SimpleStringProperty(String.valueOf(cellData.getValue().getPeso())));
+                    PetNomeColumn.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().getNome()));
+                    RacaPetColumn.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().getRaca()));
+                    PesoPetColumn.setCellValueFactory(cellData -> new SimpleStringProperty(String.valueOf(cellData.getValue().getPeso())));
+                }
+            }
         }
     }
 
@@ -151,5 +156,12 @@ public class TelaDeServicoController {
         }
     }
 
+    private void exibirAlerta(String titulo, String mensgem, Alert.AlertType tipo) {
+        Alert alerta = new Alert(tipo);
+        alerta.setTitle(titulo);
+        alerta.setHeaderText(null);
+        alerta.setContentText(mensgem);
+        alerta.showAndWait();
+    }
 
 }

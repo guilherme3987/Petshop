@@ -14,10 +14,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.Button;
-import javafx.scene.control.TableColumn;
-import javafx.scene.control.TableView;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 import javafx.scene.control.cell.PropertyValueFactory;
@@ -50,21 +47,30 @@ public class TelaBuscaController {
 
     @FXML
     void BotaoDeBusca(ActionEvent event) {
+
         String cpfTutor = CampoDeBusca.getText();
 
-        Tutor tutorEncontrado = menu.BuscaTutor(cpfTutor);
+        if (cpfTutor.isEmpty()) {
+            exibirAlerta("Atenção", "Campo de Busca Vazio.", Alert.AlertType.INFORMATION);
+        } else {
+            Tutor tutorEncontrado = menu.BuscaTutor(cpfTutor);
 
-        tabelaDados.getItems().clear();
+            if (tutorEncontrado == null) {
+                exibirAlerta("Atenção", "CPF Não Foi Encontrado.", Alert.AlertType.INFORMATION);
+            } else {
+                tabelaDados.getItems().clear();
 
-        if (tutorEncontrado != null) {
-            ObservableList<Tutor> tutorEncontradoList = FXCollections.observableArrayList();
-            tutorEncontradoList.add(tutorEncontrado);
+                if (tutorEncontrado != null) {
+                    ObservableList<Tutor> tutorEncontradoList = FXCollections.observableArrayList();
+                    tutorEncontradoList.add(tutorEncontrado);
 
-            tabelaDados.setItems(tutorEncontradoList);
+                    tabelaDados.setItems(tutorEncontradoList);
 
-            TutorNomeColumn.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().getNome()));
-            QuantidadePetColumn.setCellValueFactory(cellData -> new SimpleStringProperty(String.valueOf(cellData.getValue().getListaDePets().size())));
-            TelefoneColumn.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().getTelefone()));
+                    TutorNomeColumn.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().getNome()));
+                    QuantidadePetColumn.setCellValueFactory(cellData -> new SimpleStringProperty(String.valueOf(cellData.getValue().getListaDePets().size())));
+                    TelefoneColumn.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().getTelefone()));
+                }
+            }
         }
     }
 
@@ -84,17 +90,21 @@ public class TelaBuscaController {
             System.out.println("Tutot : " + tutorEncontradoList.add(busca));
         }
 
-        tabelaDados.setItems(tutorEncontradoList);
+        if (tutorEncontradoList.isEmpty()) {
+            exibirAlerta("Atenção", "Não há Items Cadastrados Para Exibir.", Alert.AlertType.INFORMATION);
+        } else {
+            tabelaDados.setItems(tutorEncontradoList);
 
-        TutorNomeColumn.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().getNome()));
+            TutorNomeColumn.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().getNome()));
 
-        // Configuração da coluna QuantidadePetColumn
-        QuantidadePetColumn.setCellValueFactory(cellData -> {
-            int quantidadePets = cellData.getValue().getListaDePets().size();
-            return new SimpleStringProperty(Integer.toString(quantidadePets));
-        });
+            // Configuração da coluna QuantidadePetColumn
+            QuantidadePetColumn.setCellValueFactory(cellData -> {
+                int quantidadePets = cellData.getValue().getListaDePets().size();
+                return new SimpleStringProperty(Integer.toString(quantidadePets));
+            });
 
-        TelefoneColumn.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().getTelefone()));
+            TelefoneColumn.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().getTelefone()));
+        }
     }
 
     @FXML
@@ -177,5 +187,13 @@ public class TelaBuscaController {
         } catch (Exception e) {
             e.printStackTrace();
         }
+    }
+
+    private void exibirAlerta(String titulo, String mensgem, Alert.AlertType tipo) {
+        Alert alerta = new Alert(tipo);
+        alerta.setTitle(titulo);
+        alerta.setHeaderText(null);
+        alerta.setContentText(mensgem);
+        alerta.showAndWait();
     }
 }
